@@ -8,18 +8,15 @@ import com.borachio._
 import com.borachio.junit3.MockFactory
 
 import com.google.inject._
-import roboguice.test.RoboUnitTestCase
-
 import com.touchtype_fluency.examples.borachio_warehouse._
 
 class TestBorachioWarehouse extends TestCase with MockFactory {
-  
+
   var injector : Injector = _
   var mockWarehouse : Warehouse with Mock = _
 
-
-  override def setUp {
-    super.setUp
+  override def setUp() {
+    super.setUp()
     mockWarehouse = mock[Warehouse]
 
     injector = Guice.createInjector(new AbstractModule {
@@ -34,7 +31,7 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
   }
 
   @MediumTest
-  def testFill {
+  def testFill() {
     withExpectations {
       inSequence {
         mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning true  once();
@@ -51,7 +48,7 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
   }
 
   @MediumTest
-  def testFill_NoInventory {
+  def testFill_NoInventory() {
     withExpectations {
       inSequence {
         mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning false once();
@@ -67,8 +64,7 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
     }
   }
 
-  override def tearDown {
-    super.tearDown
+  override def tearDown() {
+    super.tearDown()
   }
- 
 }
