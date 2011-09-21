@@ -16,7 +16,6 @@ public class WarehouseImpl implements Warehouse {
         mData.add(new Pair<String, Integer>("Laphroaig", 30));
     }
     
-    @Override
     public void add(String name, int quantity) {
         int stockNow = 0;
         for(int i = 0; i < mData.size(); ++i) {
@@ -31,12 +30,10 @@ public class WarehouseImpl implements Warehouse {
         mData.add(new Pair<String,Integer>(name, stockNow + quantity));
     }
 
-    @Override
     public ArrayList<Pair<String, Integer>> getInventory() {
         return mData;
     }
 
-    @Override
     public boolean hasInventory(String name, int quantity) {
         for(Pair<String, Integer> stockItem : mData) {
             if(stockItem.first.equals(name) && stockItem.second >= quantity) {
@@ -47,7 +44,6 @@ public class WarehouseImpl implements Warehouse {
         return false;
     }
 
-    @Override
     public void remove(String name, int quantity) {
         for(int i = 0; i < mData.size(); ++i) {
             Pair<String, Integer> stockItem = mData.get(i);

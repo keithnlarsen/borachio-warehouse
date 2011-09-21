@@ -45,6 +45,25 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
       o.update("Talisker", 10)
 
       assertTrue(o.fill)
+
+      verifyExpectations
+    }
+  }
+
+  @MediumTest
+  def testFill_NoInventory {
+    withExpectations {
+      inSequence {
+        mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning false once;
+        mockWarehouse expects 'remove withArgs ("Talisker", 10) never;
+      }
+
+      val o = injector.getInstance(classOf[Order])
+      o.update("Talisker", 10)
+
+      assertFalse(o.fill)
+
+      verifyExpectations
     }
   }
 
