@@ -37,8 +37,8 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
   def testFill {
     withExpectations {
       inSequence {
-        mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning true once;
-        mockWarehouse expects 'remove withArgs ("Talisker", 10) once;
+        mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning true  once();
+        mockWarehouse expects 'remove withArgs ("Talisker", 10) once();
       }
 
       val o = injector.getInstance(classOf[Order])
@@ -46,7 +46,7 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
 
       assertTrue(o.fill)
 
-      verifyExpectations
+      verifyExpectations()
     }
   }
 
@@ -54,8 +54,8 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
   def testFill_NoInventory {
     withExpectations {
       inSequence {
-        mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning false once;
-        mockWarehouse expects 'remove withArgs ("Talisker", 10) never;
+        mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning false once();
+        mockWarehouse expects 'remove withArgs ("Talisker", 10) never();
       }
 
       val o = injector.getInstance(classOf[Order])
@@ -63,7 +63,7 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
 
       assertFalse(o.fill)
 
-      verifyExpectations
+      verifyExpectations()
     }
   }
 

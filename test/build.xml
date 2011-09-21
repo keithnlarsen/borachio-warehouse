@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="BorachioWarehouseTest" default="help">
 
+    <property environment="env" />
+    <property name="sdk.dir" value="${env.ANDROID_SDK}"/>
+
 <!-- The local.properties file is created and updated by the 'android'
      tool.
      It contains the path to the SDK. It should *NOT* be checked into
@@ -35,7 +38,6 @@
 
     <!-- Required pre-setup import -->
     <import file="${sdk.dir}/tools/ant/pre_setup.xml" />
-
 
 <!-- extension targets. Uncomment the ones where you want to do custom work
      in between standard targets -->
@@ -77,9 +79,8 @@
     <setup />
 
     <!-- Scala -->
-    <property environment="env" />
     <property name="scala.dir" value="${env.SCALA_HOME}"/>
-    <property name="proguard.dir" value="${env.ANDROID_SDK}/tools/proguard/"/>
+    <property name="proguard.dir" value="${sdk.dir}/tools/proguard/"/>
     <import file="build-scala.xml" /> 
     <!-- Converts this project's .class files into .dex files -->
     <target name="-dex" depends="compile, scala-compile, scala-shrink">

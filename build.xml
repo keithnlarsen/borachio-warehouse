@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="BorachioWarehouse" default="help">
+    <property environment="env" />
+    <property name="sdk.dir" value="${env.ANDROID_SDK}"/>
+
 
 <!-- The local.properties file is created and updated by the 'android'
      tool.
@@ -34,7 +37,7 @@
 
 
     <!-- Required pre-setup import -->
-    <import file="${sdk.dir}/tools/ant/pre_setup.xml" />
+    <import file="${env.ANDROID_SDK}/tools/ant/pre_setup.xml" />
 
 
 <!-- extension targets. Uncomment the ones where you want to do custom work
