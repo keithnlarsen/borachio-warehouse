@@ -14,9 +14,9 @@ Dependency Injection is really useful to us for this development style. If you'r
 Notes on Building
 -----------------
 
-The project has a selection of tags, which are numbered to go along with the tutorial. Each of these /should/ just build.  I've changed the Ant build file to look for 2 environment variables one for the Android SDK location an one for the Scala home directory.  You must set these up in order for it to build, the exact names are "ANDROID_SDK" and "SCALA_HOME".
+The project has a selection of tags, which are numbered to go along with the tutorial. Each of these /should/ just build.  I've changed the Ant build file to look for 2 environment variables one for the Android SDK location an one for the Scala home directory.  You must set these up in order for it to build, the exact names are `ANDROID_SDK` and `SCALA_HOME`.
 
-You need to install the version of [Scala](http://www.scala-lang.org) that matches the Borachio version in test/libs. At the time of writing this is 2.9.0.1 - adjust the `local.properties` as mentioned above to reflect your installation. Otherwise, this is pretty much a straight forward Ant-based Android project.
+You need to install the version of [Scala](http://www.scala-lang.org) that matches the Borachio version in test/libs. At the time of writing this is 2.9.0.1. Otherwise, this is pretty much a straight forward Ant-based Android project.
 
 
 Tutorial
