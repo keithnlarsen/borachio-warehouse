@@ -37,7 +37,7 @@ public class BorachioWarehouseAdapter extends BaseAdapter {
     public View getView(int index, View convertView, ViewGroup parent) {
 
         // Set up Android's list view component
-        ViewHolder holder = null;
+        ViewHolder holder;
         if (convertView == null) {
             convertView = LayoutInflater.from(mWarehouseActivity).inflate(R.layout.list_item, null);            
             
