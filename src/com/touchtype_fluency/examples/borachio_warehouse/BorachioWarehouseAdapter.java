@@ -7,11 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-/**
- * Wrapper around the Warehouse class to convert things for the list view.
- */
 public class BorachioWarehouseAdapter extends BaseAdapter {
-
     private BorachioWarehouse mWarehouseActivity;
     
     public BorachioWarehouseAdapter(BorachioWarehouse w) {

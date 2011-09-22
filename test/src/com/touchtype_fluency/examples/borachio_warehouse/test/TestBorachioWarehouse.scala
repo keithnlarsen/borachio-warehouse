@@ -23,7 +23,6 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
             override def configure() {
                 // System Under Test is Order, so we use the real implementation
                 bind(classOf[Order]).to(classOf[OrderImpl])
-
                 // Order has a dependency on Warehouse, which we are mocking
                 bind(classOf[Warehouse]).toInstance(mockWarehouse)
             }
@@ -42,7 +41,6 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
             o.update("Talisker", 10)
 
             assertTrue(o.fill)
-
             verifyExpectations()
         }
     }
@@ -59,7 +57,6 @@ class TestBorachioWarehouse extends TestCase with MockFactory {
             o.update("Talisker", 10)
 
             assertFalse(o.fill)
-
             verifyExpectations()
         }
     }

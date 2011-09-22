@@ -1,10 +1,9 @@
 package com.touchtype_fluency.examples.borachio_warehouse;
-import java.util.List;
-
-import roboguice.application.RoboApplication;
 
 import com.google.inject.Module;
+import roboguice.application.RoboApplication;
 
+import java.util.List;
 
 public class BorachioWarehouseApplication extends RoboApplication {
     protected void addApplicationModules(List<Module> modules) {
