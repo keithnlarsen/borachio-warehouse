@@ -63,5 +63,4 @@ public class BorachioWarehouseAdapter extends BaseAdapter {
         TextView mProduct;
         TextView mQuantity;
     }
-
 }
