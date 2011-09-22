@@ -8,20 +8,20 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class BorachioWarehouseAdapter extends BaseAdapter {
-    private BorachioWarehouse mWarehouseActivity;
+    private BorachioWarehouse _warehouseActivity;
     
     public BorachioWarehouseAdapter(BorachioWarehouse w) {
-        mWarehouseActivity = w;
+        _warehouseActivity = w;
     }
     
     @Override
     public int getCount() {
-        return mWarehouseActivity.getWarehouse().getInventory().size();
+        return _warehouseActivity.getWarehouse().getInventory().size();
     }
 
     @Override
     public Object getItem(int index) {
-        return mWarehouseActivity.getWarehouse().getInventory().get(index);
+        return _warehouseActivity.getWarehouse().getInventory().get(index);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class BorachioWarehouseAdapter extends BaseAdapter {
         // Set up Android's list view component
         ViewHolder holder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(mWarehouseActivity).inflate(R.layout.list_item, null);            
+            convertView = LayoutInflater.from(_warehouseActivity).inflate(R.layout.list_item, null);
             
             holder = new ViewHolder();
             holder.mProduct = (TextView) convertView.findViewById(R.id.product_label);
@@ -48,7 +48,7 @@ public class BorachioWarehouseAdapter extends BaseAdapter {
         }
         
         // Now read the data and add it to the list view item
-        Pair<String, Integer> data = mWarehouseActivity.getWarehouse().getInventory().get(index);
+        Pair<String, Integer> data = _warehouseActivity.getWarehouse().getInventory().get(index);
         holder.mProduct.setText(data.first);
         holder.mQuantity.setText(data.second.toString());
         

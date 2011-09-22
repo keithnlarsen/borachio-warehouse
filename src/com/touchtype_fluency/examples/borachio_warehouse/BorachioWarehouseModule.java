@@ -8,7 +8,7 @@ public class BorachioWarehouseModule extends AbstractAndroidModule {
     }
     
     protected void configure() {
-        bind(Warehouse.class).to(WarehouseImpl.class);
-        bind(Order.class).to(OrderImpl.class);
+        bind(IWarehouse.class).to(Warehouse.class);
+        bind(IOrder.class).to(Order.class);
     }
 }
