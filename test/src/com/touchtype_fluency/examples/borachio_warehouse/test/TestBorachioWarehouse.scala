@@ -12,59 +12,59 @@ import com.touchtype_fluency.examples.borachio_warehouse._
 
 class TestBorachioWarehouse extends TestCase with MockFactory {
 
-  var injector : Injector = _
-  var mockWarehouse : Warehouse with Mock = _
+    var injector : Injector = _
+    var mockWarehouse : Warehouse with Mock = _
 
-  override def setUp() {
-    super.setUp()
-    mockWarehouse = mock[Warehouse]
+    override def setUp() {
+        super.setUp()
+        mockWarehouse = mock[Warehouse]
 
-    injector = Guice.createInjector(new AbstractModule {
-      override def configure() {
-        // System Under Test is Order, so we use the real implementation
-        bind(classOf[Order]).to(classOf[OrderImpl])
+        injector = Guice.createInjector(new AbstractModule {
+            override def configure() {
+                // System Under Test is Order, so we use the real implementation
+                bind(classOf[Order]).to(classOf[OrderImpl])
 
-        // Order has a dependency on Warehouse, which we are mocking
-        bind(classOf[Warehouse]).toInstance(mockWarehouse)
-      }
-    })
-  }
-
-  @MediumTest
-  def testFill() {
-    withExpectations {
-      inSequence {
-        mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning true  once();
-        mockWarehouse expects 'remove withArgs ("Talisker", 10) once();
-      }
-
-      val o = injector.getInstance(classOf[Order])
-      o.update("Talisker", 10)
-
-      assertTrue(o.fill)
-
-      verifyExpectations()
+                // Order has a dependency on Warehouse, which we are mocking
+                bind(classOf[Warehouse]).toInstance(mockWarehouse)
+            }
+        })
     }
-  }
 
-  @MediumTest
-  def testFill_NoInventory() {
-    withExpectations {
-      inSequence {
-        mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning false once();
-        mockWarehouse expects 'remove withArgs ("Talisker", 10) never();
-      }
+    @MediumTest
+    def testFill() {
+        withExpectations {
+            inSequence {
+                mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning true  once();
+                mockWarehouse expects 'remove withArgs ("Talisker", 10) once();
+            }
 
-      val o = injector.getInstance(classOf[Order])
-      o.update("Talisker", 10)
+            val o = injector.getInstance(classOf[Order])
+            o.update("Talisker", 10)
 
-      assertFalse(o.fill)
+            assertTrue(o.fill)
 
-      verifyExpectations()
+            verifyExpectations()
+        }
     }
-  }
 
-  override def tearDown() {
-    super.tearDown()
-  }
+    @MediumTest
+    def testFill_NoInventory() {
+        withExpectations {
+            inSequence {
+                mockWarehouse expects 'hasInventory withArgs ("Talisker", 10) returning false once();
+                mockWarehouse expects 'remove withArgs ("Talisker", 10) never();
+            }
+
+            val o = injector.getInstance(classOf[Order])
+            o.update("Talisker", 10)
+
+            assertFalse(o.fill)
+
+            verifyExpectations()
+        }
+    }
+
+    override def tearDown() {
+        super.tearDown()
+    }
 }
